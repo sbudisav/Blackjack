@@ -2,20 +2,14 @@ class Array
   def where(hash_input)
     output_array = []
     i = 0
-    puts "ah shit we got two inputs now"
-    puts hash_input
     self.each do |hash|
-      hash_input.each_key do |input_key|
-        hash.each do |key, value|
-          if hash_input[key] === value
-            output_array << self[i]
-          end
-        end
+      if hash_input.all? {|key, value| value === hash[key]}
+        output_array << self[i]
       end
       i+=1
     end
+    puts "**** FINAL OUTPUT ****"
     pp output_array
     output_array
   end
 end
-
